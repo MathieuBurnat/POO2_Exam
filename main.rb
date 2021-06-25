@@ -1,5 +1,5 @@
-require 'net/smtp'
 require 'kramdown'
+require './mailListener'
 
 config = {
   'recipients_filename' => 'recipients.txt',
@@ -43,9 +43,9 @@ Subject: Notification
 #{message}
 END_OF_MESSAGE
 
-Net::SMTP.start('mail.cpnv.ch', 25) do |smtp|
-  smtp.send_message mail_message,
-  from,
-  recipients
-end
+port = ARGV[0] || 25
+mail = ARGV[1] || "mail.cpnv.ch"
+
+MailListener.new(mail, port, mail_message, from, recipients)
+
 
