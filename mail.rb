@@ -6,10 +6,17 @@ class Mail
         @from = from
         @recipients = recipients
         @message = ""
-        @options = MailOptions.new
+        @mailOptions = MailOptions.new
+    end
+
+    def useOptions(message)
+        @mailOptions.options.each do |option|
+            message = option.addOptionTo(message)
+        end
     end
 
     def create(message)
+        useOptions(message)
 
 @mail_message = <<END_OF_MESSAGE
 From: #{@from}

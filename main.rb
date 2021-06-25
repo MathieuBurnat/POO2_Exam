@@ -1,4 +1,3 @@
-require 'kramdown'
 require './mailListener'
 require './mail'
 
@@ -20,19 +19,7 @@ if config['recipients_dbconnection']
 end
 
 
-add_sysinfo = ARGV.delete('--add-sysinfo')
-markdownize = ARGV.delete('--markdownize')
-
 message = ARGV.shift
-
-if add_sysinfo
-  message += "\n\n---\n\n"
-  message += " - RUBY_VERSION: #{RUBY_VERSION}\n"
-end
-
-if markdownize
-  message = Kramdown::Document.new(message).to_html
-end
 
 mail = Mail.new(from, recipients)
 mail.create(message)
