@@ -1,11 +1,11 @@
 require 'net/smtp'
 
 class MailListener
-    def initialize(mail, port, mail_message, from, recipients)
-        Net::SMTP.start(mail, port) do |smtp|
-            smtp.send_message mail_message,
-            from,
-            recipients
+    def initialize(mailAdress, port, mail)
+        Net::SMTP.start(mailAdress, port) do |smtp|
+            smtp.send_message mail.mail_message,
+            mail.from,
+            mail.recipients
           end
     end
 end

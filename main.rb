@@ -1,5 +1,6 @@
 require 'kramdown'
 require './mailListener'
+require './mail'
 
 config = {
   'recipients_filename' => 'recipients.txt',
@@ -33,19 +34,11 @@ if markdownize
   message = Kramdown::Document.new(message).to_html
 end
 
-mail_message = <<END_OF_MESSAGE
-From: #{from}
-To: #{recipients.join(", ")}
-MIME-Version: 1.0
-Content-type: text/html
-Subject: Notification
-
-#{message}
-END_OF_MESSAGE
+mail = Mail.new(from, recipients, message)
 
 port = ARGV[0] || 25
-mail = ARGV[1] || "mail.cpnv.ch"
+mailAdress = ARGV[1] || "mail.cpnv.ch"
 
-MailListener.new(mail, port, mail_message, from, recipients)
+MailListener.new(mailAdress, port, mail)
 
 
