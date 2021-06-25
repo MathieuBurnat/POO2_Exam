@@ -12,14 +12,16 @@ class Mail
         @recipients = Recipients.new.recipients
     end
 
+    def addOption(option)
+        @mailOptions.argOptions.push(option)
+    end
+
     def addRecipient(recipient)
         @recipients.push(recipient)
     end
 
     def useOptionsWith(message)
-        @mailOptions.options.each do |option|
-            message = option.addOptionTo(message)
-        end
+        return @mailOptions.useOptionsWith(message)
     end
 
     def create(message)

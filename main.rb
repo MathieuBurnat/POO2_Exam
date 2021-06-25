@@ -9,6 +9,10 @@ from = ARGV[2] || config.dig("from")
 message = ARGV.shift
 
 mail = Mail.new(from)
+
+mail.addOption('--add-sysinfo')
+mail.addOption('--markdownize')
+
 mail.addRecipient("mathieu.burnat@cpnv.ch")
 mail.addRecipient("pascal.hurni.nospam@cpnv.ch")
 mail.addRecipient("alexandre.philbert.nospam@cpnv.ch")

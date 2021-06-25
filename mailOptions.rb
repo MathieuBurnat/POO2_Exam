@@ -2,16 +2,21 @@ require "./options/addSysinfo"
 require "./options/markdownize"
 
 class MailOptions
-    attr_reader :options
+    attr_reader :argOptions
     def initialize
+        @argOptions = []
         @options = []
 
         add(Markdownize.new) 
-        add(AddSysinfo.new)  
-        # To Do :
-        # Set something like :
-        # add_sysinfo = ARGV.delete('--add-sysinfo') 
-        # markdownize = ARGV.delete('--markdownize')
+        add(AddSysinfo.new) 
+    end
+
+    def useOptionsWith(message)
+        @options.each do |option|
+            message = option.useOptionsWith(@argOptions, message)
+        end
+
+        return message
     end
 
     def add(option)
