@@ -17,9 +17,6 @@ mail.addRecipient("mathieu.burnat@cpnv.ch")
 mail.addRecipient("pascal.hurni.nospam@cpnv.ch")
 mail.addRecipient("alexandre.philbert.nospam@cpnv.ch")
 
-puts "Display Recipients"
-p mail.recipients
-
 mail.create(message)
 
 MailListener.new(mailAdress, port, mail)
