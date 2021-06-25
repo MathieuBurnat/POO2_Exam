@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    maruku (0.7.3)
+
+PLATFORMS
+  ruby
+  x64-mingw32
+
+DEPENDENCIES
+  maruku
+
+BUNDLED WITH
+   1.17.2
