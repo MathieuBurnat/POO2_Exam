@@ -1,10 +1,13 @@
 require './mailListener'
 require './mail'
+require './config'
+
+config = YAML.load_file('./config.yml')
 
 port = ARGV[0] || 25
 mailAdress = ARGV[1] || "mail.cpnv.ch"
+from = ARGV[2] || config.dig("from")
 
-from = "mathieu.burnat@cpnv.ch"
 
 message = ARGV.shift
 
