@@ -34,7 +34,8 @@ if markdownize
   message = Kramdown::Document.new(message).to_html
 end
 
-mail = Mail.new(from, recipients, message)
+mail = Mail.new(from, recipients)
+mail.create(message)
 
 port = ARGV[0] || 25
 mailAdress = ARGV[1] || "mail.cpnv.ch"
