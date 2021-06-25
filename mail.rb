@@ -2,10 +2,10 @@ require "./mailOptions"
 require "./recipients"
 class Mail
     attr_reader :mail_message, :from, :recipients, :message
-    def initialize(from, recipients)
+    def initialize(from)
         @mail_message = ""
         @from = from
-        @recipients = recipients
+        @recipients = ""
         @message = ""
 
         @mailOptions = MailOptions.new
