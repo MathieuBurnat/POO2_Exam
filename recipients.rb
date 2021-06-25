@@ -1,5 +1,5 @@
-require "./recipientConfiguration/recipientsFilename"
-require "./recipientConfiguration/recipientsDbconnection"
+require "./recipientConfiguration/filename"
+require "./recipientConfiguration/dbconnection"
 
 class Recipients
     attr_reader :recipients

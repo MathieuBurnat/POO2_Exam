@@ -16,14 +16,14 @@ class Mail
         @recipients.push(recipient)
     end
 
-    def useOptions(message)
+    def useOptionsWith(message)
         @mailOptions.options.each do |option|
             message = option.addOptionTo(message)
         end
     end
 
     def create(message)
-        useOptions(message)
+        useOptionsWith(message)
 
 @mail_message = <<END_OF_MESSAGE
 From: #{@from}
