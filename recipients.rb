@@ -5,6 +5,7 @@ class Recipients
     attr_reader :recipients
     def initialize
         @confs = []
+        @recipients = []
 
         add(RecipientsFilename.new) 
         add(RecipientsDbconnection.new)
@@ -14,7 +15,7 @@ class Recipients
 
     def setRecipients
         @confs.each do |conf|
-            recipients = conf.addConfTo(recipients)
+            recipients = conf.addConfTo(@recipients)
         end
     end
 
