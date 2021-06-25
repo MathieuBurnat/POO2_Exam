@@ -1,4 +1,5 @@
 require "./mailOptions"
+require "./recipients"
 class Mail
     attr_reader :mail_message, :from, :recipients, :message
     def initialize(from, recipients)
@@ -6,7 +7,13 @@ class Mail
         @from = from
         @recipients = recipients
         @message = ""
+
         @mailOptions = MailOptions.new
+        @recipients = Recipients.new.recipients
+    end
+
+    def addRecipient(recipient)
+        @recipients.push(recipient)
     end
 
     def useOptions(message)
