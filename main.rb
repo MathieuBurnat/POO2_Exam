@@ -10,8 +10,8 @@ message = ARGV.shift || "This is a mail test !"
 
 mail = Mail.new(from)
 
-mail.addOption('--add-sysinfo')
-mail.addOption('--markdownize')
+mail.addOption(ARGV.delete('--add-sysinfo'))
+mail.addOption(ARGV.delete('--markdownize'))
 
 mail.addRecipient("mathieu.burnat@cpnv.ch")
 mail.addRecipient("pascal.hurni.nospam@cpnv.ch")
