@@ -13,7 +13,7 @@ class Recipients
     end
 
     def setRecipients
-        @recipients.confs.each do |conf|
+        @confs.each do |conf|
             recipients = conf.addConfTo(recipients)
         end
     end
